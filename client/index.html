@@ -1,0 +1,84 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le site web et le blog du club amitié triolais (Triaize)">
+</head>
+
+<template name="header">
+    <div class="header">
+        <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+            <a class="pure-menu-heading" href="http://www.paysnedelamer.fr/rubrique.php3?id_rubrique=61" target="_blank">Triaize</a>
+            <ul>
+                <li class="pure-menu-selected"><a href="/">{{_ "home"}}</a></li>
+                <li><a href="{{pathFor 'blogList'}}">{{_ "blog"}}</a></li>
+              {{#if currentUser}}
+                  <li><a class="sign-out" href="#">{{_ "sign_out"}}</a></li>
+              {{else}}
+                  <li><a href="/sign-up">{{_ "register"}}</a></li>
+                  <li><a href="/sign-in">{{_ "sign_in"}}</a></li>
+              {{/if}}
+            </ul>
+        </div>
+    </div>
+</template>
+
+<template name="mainLayout">
+  {{> header}}
+  {{> yield}}
+</template>
+
+<template name="splash">
+    <div class="splash-container">
+        <div class="splash">
+            <h1 class="splash-head">Le club amitié triolais</h1>
+
+            <p class="splash-subhead"></p>
+
+            <p>
+                <a href="/blog" class="pure-button pure-button-primary button-xlarge">Bienvenue au blog !</a>
+            </p>
+        </div>
+    </div>
+</template>
+
+<template name="home">
+  {{> splash}}
+    <div class="content-wrapper">
+
+        <div class="content">
+            <h2 class="content-head is-center">Contactez-nous !</h2>
+
+            <div class="pure-g">
+                <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                    <h3 class="content-subhead">
+                        <i class="fa fa-th-large"></i>
+                        Contact
+                    </h3>
+                    <p>michel.lieven@orange.fr</p>
+                </div>
+                <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                    <h3 class="content-subhead">
+                        <i class="fa fa-mobile"></i>
+                        Téléphone
+                    </h3>
+                    <p>02 51 56 36 16</p>
+                </div>
+                <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                    <h3 class="content-subhead">
+                        <i class="fa fa-th-large"></i>
+                        Adresse
+                    </h3>
+                    <p>4, rue Principale 85580 Triaize</p>
+                </div>
+                <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                    <h3 class="content-subhead">
+                        <i class="fa fa-check-square-o"></i>
+                        Salle
+                    </h3>
+                    <p><a href="https://www.google.fr/maps/@46.393867,-1.201357,3a,75y,232.17h,90.08t/data=!3m4!1e1!3m2!1sRGhxF4fqEhr0RADuzB0YZA!2e0" target="_blank">Salle des associations</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

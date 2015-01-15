@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "0.10"
+before_install:
+  - "curl https://install.meteor.com | /bin/sh"
+  - "echo 'ogourment' $METEOR_PASSWORD '.' | xargs -n 1 | meteor login"
+services:
+  - mongodb
+script: meteor deploy --settings settings.json clubamitietriolais.meteor.com

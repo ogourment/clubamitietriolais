@@ -18,7 +18,7 @@
       "blogPath": "/blog",
       "archivePath": "/blog/archive",
       "useUniqueBlogPostsPath": true,
-      "locale": "fr"
+      "defaultLocale": "fr"
     }
   }
 }

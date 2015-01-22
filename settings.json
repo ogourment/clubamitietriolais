@@ -1,8 +1,6 @@
 {
   "public": {
     "blog": {
-      "name": "Club amitié triolais",
-      "description": "Le site web et le blog du club amitié triolais",
       "prettify": {
         "syntax-highlighting": true,
         "element-classes": [
@@ -20,18 +18,7 @@
       "blogPath": "/blog",
       "archivePath": "/blog/archive",
       "useUniqueBlogPostsPath": true,
-      "locale": "fr",
-      "moment": {
-        "weekdays": [ "lundi", "mardi", "mercredi", "jeudi", "vendredi" ],
-        "calendar": {
-          "lastDay": "[hier à] LT",
-          "sameDay": "[aujourd'hui à] LT",
-          "nextDay": "[demain à] LT",
-          "lastWeek": "dddd [dernier à] LT",
-          "nextWeek": "dddd [à] LT",
-          "sameElse": "L"
-        }
-      }
+      "locale": "fr"
     }
   }
 }

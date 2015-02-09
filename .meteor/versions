@@ -51,6 +51,8 @@ mongo@1.0.11
 mrt:moment@2.8.1
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
+ogourment:md-blog@0.4.2
+ogourment:settings@1.0.1
 ordered-dict@1.0.2
 random@1.0.2
 reactive-dict@1.0.5
@@ -77,4 +79,3 @@ useraccounts:unstyled@1.4.1
 webapp@1.1.6
 webapp-hashing@1.0.2
 xolvio:hljs@0.0.1
-xolvio:md-blog@0.4.1

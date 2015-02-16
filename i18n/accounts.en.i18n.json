@@ -1,0 +1,11 @@
+{
+  "email_label": "Email:",
+  "email_placeholder": "me@something.com",
+  "password_label": "Password:",
+  "password_label": "Password (again):",
+  "password_placeholder": "Secret",
+  "login_error": "Email or password not recognized.",
+  "passwords_dont_match": "Passwords don't match",
+  "register_email_exists": "An account with this email already exists.",
+  "register_error": "An error occured. Please try again later."
+}

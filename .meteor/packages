@@ -6,7 +6,6 @@
 meteor-platform
 iron:router
 fortawesome:fontawesome
-useraccounts:unstyled
 accounts-password
 less
 joshowens:shareit
@@ -14,3 +13,4 @@ tap:i18n
 ogourment:md-blog
 meteorhacks:ssr
 email
+accounts-base

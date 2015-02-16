@@ -1,7 +1,11 @@
 Accounts.onCreateUser(function (options, user) {
+
   user.roles = ['mdblog-author'];
+
   if (options.profile)
     user.profile = options.profile;
+
+  // TODO find a way to verify the user does not already exists!
 
   console.info('Instructions sent to new user: ', user.emails[0].address);
   var locale = Meteor.settings.public.blog.defaultLocale;

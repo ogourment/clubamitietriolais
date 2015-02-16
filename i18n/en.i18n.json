@@ -7,7 +7,6 @@
   "blog": "Blog",
   "sign_out": "Sign out",
   "register": "Register",
-  "register_now": "Register Now!",
   "sign_in": "Sign in",
   "recover_password": "Recover Your Password",
   "md_blog_desc": "A drop-in markdown blog for your Meteor app.",

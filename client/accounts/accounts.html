@@ -1,0 +1,45 @@
+<template name="accounts">
+  {{> header}}
+  <div class="pure-g">
+    <div class="pure-u">
+      {{> yield}}
+    </div>
+  </div>
+</template>
+
+<template name="login">
+  <form class="pure-form accounts-form">
+    <fieldset>
+      <legend>{{_ "sign_in"}}</legend>
+      {{> accountsFields}}
+      <input class="pure-button" type="submit" value="{{_ 'sign_in'}}" />
+    </fieldset>
+  </form>
+</template>
+
+<template name="register">
+  <form class="pure-form accounts-form">
+    <fieldset>
+      <legend>{{_ "register"}}</legend>
+      {{> accountsFields}}
+      <label for="accounts-password">{{_ 'password2_label'}}</label>
+      <input type="password" required id="accounts-password2"
+        placeholder="{{_ 'password_placeholder'}}" />
+      <input class="pure-button" type="submit" value="{{_ 'register'}}" />
+    </fieldset>
+  </form>
+</template>
+
+<template name="accountsFields">
+
+  <label for="accounts-email">{{_ 'email_label'}}</label>
+  <input type="email" required autofocus id="accounts-email"
+    placeholder="{{_ 'email_placeholder'}}" />
+
+  <div id="accounts-error" class="blink">{{accountsError}}</div>
+
+  <label for="accounts-password">{{_ 'password_label'}}</label>
+  <input type="password" required id="accounts-password"
+    placeholder="{{_ 'password_placeholder'}}" />
+
+</template>

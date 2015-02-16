@@ -1,55 +1,77 @@
-(function () {
 
-  AccountsTemplates.configureRoute('signUp');
-  AccountsTemplates.configureRoute('signIn');
+function getCredentials (template) {
 
-  // Configure *after* TAPi18n is initialized..
-  Meteor.startup( function () {
-    
-    AccountsTemplates.configure({
-      // Behaviour
-      confirmPassword: true,
-      enablePasswordChange: true,
-      forbidClientAccountCreation: false,
-      overrideLoginErrors: true,
-      sendVerificationEmail: false,
+  var email = template.find('#accounts-email')
+    .value.replace(/^\s*|\s*$/g, "");
 
-      // Appearance
-      showAddRemoveServices: false,
-      showForgotPasswordLink: true,
-      showLabels: true,
-      showPlaceholders: true,
+  var password = template.find('#accounts-password').value;
 
-      // Client-side Validation
-      continuousValidation: false,
-      negativeFeedback: false,
-      negativeValidation: true,
-      positiveValidation: true,
-      positiveFeedback: true,
-      showValidating: true,
+  return { email: email, password: password };
+};
 
-      // Privacy Policy and Terms of Use
-      //privacyUrl: 'privacy',
-      //termsUrl: 'terms-of-use',
+function accountsError(template, key) {
 
-      // Redirects
-      homeRoutePath: '/',
-      redirectTimeout: 4000,
+  console.debug(key, TAPi18n.__(key));
+  template.find('#accounts-error').innerHTML = '<p>' + TAPi18n.__(key) + '</p>';
+};
 
-      // Texts
-      texts: {
-        button: {
-          signUp: TAPi18n.__('register_now')
-        },
-        socialSignUp: TAPi18n.__('register'),
-        socialIcons: {
-          "meteor-developer": "fa fa-rocket"
-        },
-        title: {
-          forgotPwd: TAPi18n.__('recover_password')
-        }
+Template.login.events({
+
+  'submit .accounts-form': function(event, template) {
+
+    console.log("Login...");
+
+    event.preventDefault();
+    var cred = getCredentials(template);
+
+    Meteor.loginWithPassword(cred.email, cred.password, function (err) {
+
+      if (err) {
+        console.error(err);
+        accountsError(template, 'login_error');
+      }
+      else {
+        console.info("Login successful for:", cred.email);
+        Router.go('/blog');
       }
     });
-  });
 
-})();
+    return false;
+  }
+});
+
+Template.register.events({
+
+  'submit .accounts-form': function(event, template) {
+
+    console.log("Registering...");
+
+    event.preventDefault();
+    var cred = getCredentials(template);
+    var password2 = template.find('#accounts-password2').value;
+    if (cred.password === password2) {
+
+      Accounts.createUser(cred, function (err) {
+
+        if (err) {
+          if (err.reason.toString() === 'Email already exists.') {
+            console.error('Email already exists:', err);
+            accountsError(template, 'register_email_exists');
+          } else {
+            console.error(err);
+            accountsError(template, 'register_error');
+          }
+        }
+        else {
+          console.info("Registration successful for:", cred.email);
+          Router.go('/blog');
+        }
+      });
+    }
+    else {
+      console.error('Passwords don\'t match');
+      accountsError(template, 'passwords_dont_match');
+    }
+    return false;
+  }
+});

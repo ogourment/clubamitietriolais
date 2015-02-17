@@ -5,20 +5,24 @@
 </head>
 
 <template name="header">
-    <div class="header">
-        <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-            <a class="pure-menu-heading" href="http://www.paysnedelamer.fr/rubrique.php3?id_rubrique=61" target="_blank">Triaize</a>
-            <ul>
-                <li class="pure-menu-selected"><a href="/">{{_ "home"}}</a></li>
-                <li><a href="{{pathFor 'blogList'}}">{{_ "blog"}}</a></li>
-              {{#if currentUser}}
-                  <li><a class="sign-out" href="#">{{_ "sign_out"}}</a></li>
-              {{else}}
-                  <li><a href="/sign-in">{{_ "sign_in"}}</a></li>
-              {{/if}}
-            </ul>
-        </div>
+  {{> connectionBanner}}
+  <div class="header">
+    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+      <a class="pure-menu-heading" href="http://www.paysnedelamer.fr/rubrique.php3?id_rubrique=61" target="_blank">Triaize</a>
+      <ul>
+        <li class="pure-menu-selected"><a href="/">{{_ "home"}}</a></li>
+        <li><a href="{{pathFor 'blogList'}}">{{_ "blog"}}</a></li>
+        {{#if currentUser}}
+          <li><a class="sign-out" href="#">{{_ "sign_out"}}</a></li>
+          {{#if isInRole 'mdblog-author'}}
+            <li><a href="{{pathFor 'register'}}">{{_ "register"}}</a></li>
+          {{/if}}
+        {{else}}
+          <li><a href="{{pathFor 'login'}}">{{_ "sign_in"}}</a></li>
+        {{/if}}
+      </ul>
     </div>
+  </div>
 </template>
 
 <template name="mainLayout">

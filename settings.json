@@ -22,6 +22,12 @@
       "imagePath": "/img",
       "defaultLocale": "fr",
       "emailOnPublish": true
+    },
+    "connectionBanner": {
+      "connectionLostText": "Connexion perdue ...",
+      "tryReconnectText": "Essayer de se reconnecter maintenant.",
+      "reconnectBeforeCountdownText": "Tentative de reconnexion dans",
+      "reconnectAfterCountdownText": "secondes."
     }
   }
 }

@@ -10,7 +10,7 @@
 <template name="login">
   <form class="pure-form accounts-form">
     <fieldset>
-      <legend>{{_ "sign_in"}}</legend>
+      <legend><i class="fa fa-user"></i> {{_ "sign_in"}}</legend>
       {{> accountsFields}}
       <input class="pure-button" type="submit" value="{{_ 'sign_in'}}" />
     </fieldset>
@@ -20,11 +20,17 @@
 <template name="register">
   <form class="pure-form accounts-form">
     <fieldset>
-      <legend>{{_ "register"}}</legend>
+      <legend><i class="fa fa-user"></i> {{_ "register"}}</legend>
       {{> accountsFields}}
+
       <label for="accounts-password">{{_ 'password2_label'}}</label>
       <input type="password" required id="accounts-password2"
         placeholder="{{_ 'password_placeholder'}}" />
+
+      <label for="author">{{_ 'author'}}
+        <input class="pure-" type="checkbox" id="author" />
+      </label>
+
       <input class="pure-button" type="submit" value="{{_ 'register'}}" />
     </fieldset>
   </form>
@@ -32,11 +38,11 @@
 
 <template name="accountsFields">
 
+  <div id="accounts-message">{{accountsError}}</div>
+
   <label for="accounts-email">{{_ 'email_label'}}</label>
   <input type="email" required autofocus id="accounts-email"
     placeholder="{{_ 'email_placeholder'}}" />
-
-  <div id="accounts-error" class="blink">{{accountsError}}</div>
 
   <label for="accounts-password">{{_ 'password_label'}}</label>
   <input type="password" required id="accounts-password"

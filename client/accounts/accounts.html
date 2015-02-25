@@ -1,51 +1,33 @@
 <template name="accounts">
-  {{> header}}
-  <div class="pure-g">
-    <div class="pure-u">
-      {{> yield}}
-    </div>
-  </div>
-</template>
 
-<template name="login">
-  <form class="pure-form accounts-form">
-    <fieldset>
-      <legend><i class="fa fa-user"></i> {{_ "sign_in"}}</legend>
-      {{> accountsFields}}
-      <input class="pure-button" type="submit" value="{{_ 'sign_in'}}" />
-    </fieldset>
-  </form>
-</template>
+  <section class="blog-list">
 
-<template name="register">
-  <form class="pure-form accounts-form">
-    <fieldset>
-      <legend><i class="fa fa-user"></i> {{_ "register"}}</legend>
-      {{> accountsFields}}
+    <section class="blog-controls">
+      <button title="New" id="mdblog-new" class="{{mdBlogElementClasses 'button'}}">
+        <i class="fa fa-user"></i>{{_ "register"}}</button>
+    </section>
 
-      <label for="accounts-password">{{_ 'password2_label'}}</label>
-      <input type="password" required id="accounts-password2"
-        placeholder="{{_ 'password_placeholder'}}" />
+    <table class="pure-table">
+      <thead>
+        <tr>
+          <th>{{_ "email"}}</th>
+          <th>{{_ "author"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each accounts}}
+          <tr>
+            <td><a href="/update-user/{{userId}}">{{email}}</a></td>
+            <td>
+              {{#if author}}
+                <i class="fa fa-check-square-o"></i>
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
 
-      <label for="author">{{_ 'author'}}
-        <input class="pure-" type="checkbox" id="author" />
-      </label>
-
-      <input class="pure-button" type="submit" value="{{_ 'register'}}" />
-    </fieldset>
-  </form>
-</template>
-
-<template name="accountsFields">
-
-  <div id="accounts-message">{{accountsError}}</div>
-
-  <label for="accounts-email">{{_ 'email_label'}}</label>
-  <input type="email" required autofocus id="accounts-email"
-    placeholder="{{_ 'email_placeholder'}}" />
-
-  <label for="accounts-password">{{_ 'password_label'}}</label>
-  <input type="password" required id="accounts-password"
-    placeholder="{{_ 'password_placeholder'}}" />
+  </section>
 
 </template>

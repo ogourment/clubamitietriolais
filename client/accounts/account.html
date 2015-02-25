@@ -1,0 +1,71 @@
+<template name="account">
+  {{> header}}
+  <div class="pure-g">
+    <div class="pure-u">
+      {{> yield}}
+    </div>
+  </div>
+</template>
+
+<template name="login">
+  <form class="pure-form account-form">
+    <fieldset>
+      {{> accountFields}}
+      <input class="pure-button" type="submit" value="{{_ 'sign_in'}}" />
+    </fieldset>
+  </form>
+</template>
+
+<template name="register">
+  <form class="pure-form account-form">
+    <fieldset>
+      {{> accountFields}}
+
+      <label for="account-password">{{_ 'password2_label'}}</label>
+      <input type="password" required id="account-password2"
+        placeholder="{{_ 'password_placeholder'}}" />
+
+      <label for="author">{{_ 'author'}}
+        <input class="pure-" type="checkbox" id="author" />
+      </label>
+
+      <input class="pure-button" type="submit" value="{{_ 'register'}}" />
+    </fieldset>
+  </form>
+</template>
+
+<template name="updateUser">
+  <form class="pure-form account-form">
+    <fieldset>
+      {{> accountMessageAndEmail this}}
+
+      <label for="author">{{_ 'author'}}
+        <input class="pure-" type="checkbox" checked="{{author}}" id="author" />
+      </label>
+
+      <input class="pure-button" type="submit" value="{{_ 'save'}}" />
+    </fieldset>
+    <button class="pure-button" id="delete-user"><i class='fa fa-trash'></i> {{_ 'delete'}}</button>
+  </form>
+</template>
+
+<template name="accountFields">
+
+  {{> accountMessageAndEmail}}
+
+  <label for="account-password">{{_ 'password_label'}}</label>
+  <input type="password" required id="account-password"
+    placeholder="{{_ 'password_placeholder'}}" />
+
+</template>
+
+<template name="accountMessageAndEmail">
+
+  <div id="account-message">{{accountError}}</div>
+
+  <label for="account-email">{{_ 'email_label'}}</label>
+  <input type="email" required autofocus id="account-email"
+    value="{{email}}"
+    placeholder="{{_ 'email_placeholder'}}" />
+
+</template>

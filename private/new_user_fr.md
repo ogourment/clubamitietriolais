@@ -13,10 +13,9 @@ Un blog est comme un journal, avec deux différences :
 L’adresse internet du blog est http://clubat.fr
 
 Tout le monde peut consulter les articles publiés, et les commenter.
-Seuls les adhérents inscrits peuvent gérer des articles.
-Les adhérents inscrits reçoivent un courriel lors qu’un article est publié.
+Les adhérents inscrits reçoivent un courriel lors qu’un article est publié. L'émetteur de ce courriel, ainsi que son unique destinataire, semble être l'auteur de l'article. En réalité, tous les adhérents sont en copie cachée et reçoivent le courriel.
 
-En général, et en temps qu’adhérent, vous accèderez au blog en cliquant sur le lien “Lire la suite” dans le courriel envoyé par le président.
+En général, et en temps qu’adhérent, vous accèderez au blog en cliquant sur le lien “Lire la suite” dans le courriel reçu.
 
 ## Consultation du blog
 
@@ -83,13 +82,13 @@ d. clubat.fr
 
 ### Un adhérent reçoit un courriel lorsque :
 
-a. il s’enregistre au site web
+a. un nouveau commentaire est publié
 
-b. un nouveau commentaire est publié
+b. un nouvel article est publié
 
-c. un nouvel article est publié
+c. il entre son mot de passe
 
-d. il entre son mot de passe
+d. il parle trop fort à table
 
 ### Un adhérent a le droit de (cocher tout ce qui s’applique) :
 

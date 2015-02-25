@@ -1,0 +1,66 @@
+<template name="pageList">
+  <section class="blog-list">
+    {{#if isInRole 'mdblog-author'}}
+      {{#unless fixedPages}}
+        <section class="blog-controls">
+          <button title="New" id="mdblog-new" class="{{mdBlogElementClasses 'button'}}">
+            <i class="fa fa-pencil-square-o"></i>{{_ "newPage"}}</button>
+        </section>
+      {{/unless}}
+    {{/if}}
+    {{#each this}}
+      <section class="blog-post">
+        <header>
+          <h2><a href="{{pathFor route='editPage'}}">{{title}}</a></h2>
+        </header>
+        <summary>
+          {{{summary}}}
+        </summary>
+      </section>
+    {{else}}
+      {{_ "waiting_for_pages"}}
+    {{/each}}
+  </section>
+</template>
+
+<template name="pageControls">
+  <section class="blog-controls">
+    {{#if modified}}
+      <button title="Save" id="mdblog-save" class="{{mdBlogElementClasses 'button'}}">
+        <i class="fa fa-floppy-o">{{_ "save"}}</i>
+      </button>
+    {{/if}}
+    {{#unless fixedPages}}
+      <button title="Delete" id="mdblog-delete" class="{{mdBlogElementClasses 'button'}}">
+        <i class="fa fa-trash"></i>{{_ "delete"}}</button>
+    {{/unless}}
+  </section>
+</template>
+
+<template name="displayPage">
+  <section class="blog-post">
+    {{{content}}}
+  </section>
+</template>
+
+<template name="editPage">
+  <br />
+  <br />
+  <br />
+  <br />
+  <section class="blog-post">
+    <header>
+      {{#if isInRole 'mdblog-author'}}
+        {{> pageControls }}
+        <h1 id="title" {{contenteditable}}>{{title}}</h1>
+        {{#unless fixedPages}}
+          <h3 id="summary" {{contenteditable}}>{{{summary}}}</h3>
+          <p id="page" {{contenteditable}}>{{page}}</p>
+        {{/unless}}
+      {{/if}}
+    </header>
+    <article id="content" {{contenteditable}} data-markdown="true">
+      {{{content}}}
+    </article>
+  </section>
+</template>

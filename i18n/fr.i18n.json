@@ -23,5 +23,17 @@
   "github_link": "Fork/Star on GitHub",
   "love_open_source": "Nous __heart__ la communauté du logiciel libre et accueuillons <a href=\"https://github.com/xolvio/md-blog/issues\" target=\"_blank\">vos opinions</a> et contributions.",
   "or": "ou",
-  "welcome_email_title": "Bienvenue au blog du Club Amitié Triolais !"
+  "welcome_email_title": "Bienvenue au blog du Club Amitié Triolais !",
+
+  "accounts": "Comptes",
+  "email": "Email",
+  "author": "Auteur",
+  "pages": "Pages",
+  "waiting_for_pages": "En attente de pages.",
+  "newPage": "Créer",
+  "new_page_title": "Titre",
+  "new_page_summary": "Résumé",
+  "new_page_name": "Nom",
+  "new_page_path": "/Chemin",
+  "new_page_contents": "# Contenu\nde la **nouvelle** page."
 }

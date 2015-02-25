@@ -6,4 +6,4 @@ before_install:
   - "echo 'ogourment' $METEOR_PASSWORD '.' | xargs -n 1 | meteor login"
 services:
   - mongodb
-script: meteor deploy --settings settings.json clubamitietriolais.meteor.com
+script: meteor deploy --settings settings-clubat.fr.json clubat.fr

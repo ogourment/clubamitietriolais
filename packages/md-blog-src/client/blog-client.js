@@ -362,7 +362,6 @@
     }
   }
 
-
   UI.registerHelper('mdBlogDate', function (date) {
     momentLocaleDep.depend();
     return moment(date).calendar();
@@ -377,7 +376,6 @@
         }
       }
     }
-
   });
 
 })();

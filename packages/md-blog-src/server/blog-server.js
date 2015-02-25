@@ -10,11 +10,14 @@
     if (Roles.userIsInRole(this.userId, ['mdblog-author'])) {
       return Blog.find();
     } else {
-      return Blog.find({published: true});
+      return Blog.find( { published: true } );
     }
   });
 
   function _upsertBlogPost (blog) {
+
+    check(blog, Object); // tried with Blog: Error: Match error: Unknown key in field _id
+
     blog.published = blog.published ? blog.published : false;
     blog.archived = blog.archived ? blog.archived : false;
     blog.title = blog.title.trim();
@@ -48,6 +51,8 @@
 
   function _sendEmail (blog) {
 
+    check(blog, Object); // tried with Blog: Error: Match error: Unknown key in field _id
+
     var addresses = Meteor.users.find(
       { 'emails.address': { $ne: '' } } ).map(
       function(doc) { return doc.emails[0].address });
@@ -76,7 +81,10 @@
     });
   }
 
-  function _removePost (blog) { Blog.remove(blog._id); }
+  function _removePost (blog) {
+    check(blog, Object); // tried with Blog: Error: Match error: Unknown key in field _id
+    Blog.remove(blog._id);
+  }
 
   function _upsertImage(imageName, fileType, fileSize, file) {
     var slug = _getSlug(imageName);
@@ -116,6 +124,11 @@
       }
     },
     'upsertImage': function (imageName, fileType, fileSize, file) {
+
+      check(imageName, String);
+      check(fileType, String);
+      check(fileSize, Match.Integer);
+      check(file, Match.Any);
 
       if (Roles.userIsInRole(this.userId, ['mdblog-author'])) {
         return _upsertImage(imageName, fileType, fileSize, file);

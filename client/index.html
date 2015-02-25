@@ -1,7 +1,7 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Le site web et le blog du club amitié triolais (Triaize)">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Le site web et le blog du club amitié triolais (Triaize)">
 </head>
 
 <template name="header">
@@ -10,13 +10,18 @@
     <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
       <a class="pure-menu-heading" href="http://www.paysnedelamer.fr/rubrique.php3?id_rubrique=61" target="_blank">Triaize</a>
       <ul>
-        <li class="pure-menu-selected"><a href="/">{{_ "home"}}</a></li>
+        {{#each pages}}
+          <li><a href="{{href page}}">{{title}}</a></li>
+        {{/each}}
         <li><a href="{{pathFor 'blogList'}}">{{_ "blog"}}</a></li>
         {{#if currentUser}}
-          <li><a class="sign-out" href="#">{{_ "sign_out"}}</a></li>
           {{#if isInRole 'mdblog-author'}}
-            <li><a href="{{pathFor 'register'}}">{{_ "register"}}</a></li>
+            {{#if pagesManager}}
+              <li><a href="{{pathFor 'pageList'}}">{{_ "pages"}}</a></li>
+            {{/if}}
+            <li><a href="{{pathFor 'accounts'}}">{{_ "accounts"}}</a></li>
           {{/if}}
+          <li><a class="sign-out" href="#">{{_ "sign_out"}}</a></li>
         {{else}}
           <li><a href="{{pathFor 'login'}}">{{_ "sign_in"}}</a></li>
         {{/if}}
@@ -30,58 +35,7 @@
   {{> yield}}
 </template>
 
-<template name="splash">
-    <div class="splash-container">
-        <div class="splash">
-            <h1 class="splash-head">Le club amitié triolais</h1>
-
-            <p class="splash-subhead"></p>
-
-            <p>
-                <a href="/blog" class="pure-button pure-button-primary button-xlarge">Bienvenue au blog !</a>
-            </p>
-        </div>
-    </div>
-</template>
-
-<template name="home">
-  {{> splash}}
-    <div class="content-wrapper">
-
-        <div class="content">
-            <h2 class="content-head is-center">Contactez-nous !</h2>
-
-            <div class="pure-g">
-                <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-                    <h3 class="content-subhead">
-                        <i class="fa fa-user"></i>
-                        Contact
-                    </h3>
-                    <p>michel.lievin@orange.fr</p>
-                </div>
-                <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-                    <h3 class="content-subhead">
-                        <i class="fa fa-phone"></i>
-                        Téléphone
-                    </h3>
-                    <p>02 51 28 79 45</p>
-                </div>
-                <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-                    <h3 class="content-subhead">
-                        <i class="fa fa-envelope"></i>
-                        Adresse
-                    </h3>
-                    <p>48, rue Nationale 85580 Triaize</p>
-                </div>
-                <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-                    <h3 class="content-subhead">
-                        <i class="fa fa-globe"></i>
-                        Salle
-                    </h3>
-                    <p><a href="https://www.google.fr/maps/@46.393867,-1.201357,3a,75y,232.17h,90.08t/data=!3m4!1e1!3m2!1sRGhxF4fqEhr0RADuzB0YZA!2e0" target="_blank">Salle des associations</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<template name="pageLayout">
+  {{> header}}
+  {{> yield}}
 </template>

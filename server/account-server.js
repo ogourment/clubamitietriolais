@@ -111,6 +111,6 @@ Meteor.methods({
 Meteor.publish('allUsers', function() {
 
   if (this.userId && Roles.userIsInRole(this.userId, 'mdblog-author')) {
-    return Meteor.users.find({}, {emails: 1, roles: 1})
+    return Meteor.users.find( {}, { emails: 1, roles: 1 } )
   }
 });

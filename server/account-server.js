@@ -79,14 +79,15 @@ Meteor.methods({
 
       var author = Roles.userIsInRole(userId, ['mdblog-author']);
       if (author != isAuthor) {
-        Roles.setUserRoles(userId, ['mdblog-author']);
-        console.log("User granted mdblog-author:", email);
+        if (isAuthor) {
+          Roles.setUserRoles(userId, ['mdblog-author']);
+          console.log("User granted mdblog-author:", email);
+        }
+        else {
+          Roles.setUserRoles(userId, []);
+          console.log("User revoked mdblog-author:", email);
+        }
       }
-      else {
-        Roles.setUserRoles(userId, []);
-        console.log("User revoked mdblog-author:", email);
-      }
-
       return email;
     }
 
